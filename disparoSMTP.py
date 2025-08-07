@@ -6,28 +6,28 @@ def ler_Arquivo(file_path):
     with open(file_path, "r", encoding="utf-8") as file:
         return file.read()
     
-def send_email(solicitacion, receiver_email, subject, link, html_content, type):
+def send_email(solicitacion, receiver_email, subject, link, html_content, type, manager, title):
     sender_email = "ronyelison78@gmail.com"
     sender_password = "szkh qyun cnvj uotq" # Use uma senha de app para Gmail
-    messages = [['Prezado(a) [Nome do Gestor],',
-                'Encaminho para sua apreciação a documentação referente à funcionalidade <span class="purple">[nome da funcionalidade]</span> do <span class="purple">GIT.flow</span>. ',
+    messages = [[f'Prezado(a) {manager},',
+                f'Encaminho para sua apreciação a documentação referente à funcionalidade <span class="purple">{title}</span> do <span class="purple">GIT.flow</span>. ',
                 'Solicito, por gentileza, a revisão e <span class="purple">aprovação</span> do conteúdo. Caso identifique a necessidade de ajustes, estou à disposição para realizá-los.',
-                'Você será notificado assim que a equipe responsável aprovar sua solicitação.',
-                f'{link}'],
+                f'A solicitação foi feita por: <span class="purple">{solicitacion}</span>.',
+                f''],
                  
 
-            ['Prezado(a) [Nome do Responsável],',
-                'Após análise da documentação referente à funcionalidade <span class="purple">[nome da funcionalidade]</span> do <span class="purple">GIT.flow</span>.',
+            [f'Prezado(a) {solicitacion},',
+                f'Após análise da documentação referente à funcionalidade <span class="purple">{title}</span> do <span class="purple">GIT.flow</span>.',
                 'Identificamos que o material ainda necessita de alguns <span class="purple">ajustes</span> para estar em conformidade com os padrões técnicos e de clareza esperados.',
                 'Assim que a versão ajustada estiver pronta, por favor, nos encaminhe para nova avaliação.',
-                f'{link}'],
+                ''],
                 
 
             ['Prezados(as),',
-                'Informamos que a documentação referente à funcionalidade <span class="purple">[nome da funcionalidade]</span> foi revisada, aprovada e já está publicada em nosso repositório oficial do <span class="purple">GIT.flow</span>.',
+                f'Informamos que a documentação referente à funcionalidade <span class="purple">{title}</span> foi revisada, aprovada e já está publicada em nosso repositório oficial do <span class="purple">GIT.flow</span>.',
                 'Este material faz parte do conjunto de guias técnicos da plataforma e tem como objetivo <span class="purple">orientar</span> o uso correto da funcionalidade, promovendo padronização e eficiência nos processos.',
                 'A documentação está disponível no botão abaixo, solicitamos que todos os envolvidos consultem o material conforme necessário.',
-                f'{link}']
+                '']
         ]
 
     """Envia um e-mail com conteúdo HTML."""
@@ -38,6 +38,8 @@ def send_email(solicitacion, receiver_email, subject, link, html_content, type):
 
     for cont in range(len(messages[type])):
        html_content = html_content.replace(f"{{msg{cont + 1}}}", messages[type][cont])
+       if cont == 4:
+              html_content = html_content.replace("{link}", f'<a href="{link}">Acessar link</a>')
 
     # Anexar o conteúdo HTML
     msg.attach(MIMEText(html_content, "html"))
@@ -64,4 +66,4 @@ if __name__ == "__main__":
     html_content = ler_Arquivo("index.html")
 
     # Enviar o e-mail
-    send_email("Rony", "gabriel.nunes@guaraves.com.br", "Testando Email", "google.com", html_content, 2)
+    send_email("Rony", "gabriel.nunes@guaraves.com.br", "Testando Email", "google.com", html_content, 2, "Rodrigo", "Checar páginas")
