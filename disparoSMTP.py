@@ -15,7 +15,7 @@ def send_email(manager, solicitacion, subject, title, receiver_email, link, html
 
     # Informações necessárias para o envio do e-mail
     sender_email = "ronyelison78@gmail.com"
-    sender_password = "szkh qyun cnvj uotq" # Use uma senha de app para Gmail
+    sender_password = "" # Use uma senha de app para Gmail
     messages = [[f'Prezado(a) {manager},',
                 f'Encaminho para sua apreciação a documentação referente à funcionalidade <span class="purple">{title}</span> do <span class="purple">GIT.flow</span>. ',
                 'Solicito, por gentileza, a revisão e <span class="purple">aprovação</span> do conteúdo. Caso identifique a necessidade de ajustes, estou à disposição para realizá-los.',
