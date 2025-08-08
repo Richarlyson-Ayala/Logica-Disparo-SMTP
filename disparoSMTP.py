@@ -7,11 +7,7 @@ def montar_Html(html_content, messages, link, type):
        html_content = html_content.replace(f"{{msg{cont + 1}}}", messages[type][cont])
     html_content = html_content.replace(
         "{link}",
-        f'''<a href="{link}" 
-            style="background-color:#9d00a0c7;color:#f3f3f3;border:none;padding:1rem 1.4rem;
-            border-radius:0.3rem;cursor:pointer;font-size:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);
-            margin:0 auto;text-decoration:none;display:inline-block;width:25%;transition:0.4s ease;"
-        >Acompanhar Solicitação</a>'''
+        f'''<a href="{link}" style="color: #f3f3f3;" class="color-button">Acompanhar Solicitação</a>'''
     )
     return html_content
     
@@ -144,7 +140,6 @@ if __name__ == "__main__":
                 width: 100%;
             }
 
-            /*  Estilização que ta vindo do python
             .color-button {
                 background-color: #9d00a0c7;
                 color: #f3f3f3;
@@ -157,8 +152,8 @@ if __name__ == "__main__":
                 margin: 0 auto;
                 transition: 0.4s ease;
                 text-decoration: none;
-                width: 50%;
-            } */
+                width: 25%;
+            }
 
             .color-button:hover {
                 background-color: #8c00a0c7;
