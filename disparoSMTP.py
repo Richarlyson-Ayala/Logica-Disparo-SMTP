@@ -7,7 +7,7 @@ def montar_Html(html_content, messages, link, type):
        html_content = html_content.replace(f"{{msg{cont + 1}}}", messages[type][cont])
     html_content = html_content.replace(
         "{link}",
-        f'''<a href="{link}" style="color: #f3f3f3;" class="color-button">Acompanhar Solicitação</a>'''
+        f'''<a href="{link}" style="color: #f3f3f3; padding: 16px 13%" class="color-button">Acompanhar Solicitação</a>'''
     )
     return html_content
     
