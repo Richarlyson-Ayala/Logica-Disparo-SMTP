@@ -39,7 +39,14 @@ def send_email(solicitacion, receiver_email, subject, link, html_content, type, 
     for cont in range(len(messages[type])):
        html_content = html_content.replace(f"{{msg{cont + 1}}}", messages[type][cont])
        if cont == 4:
-              html_content = html_content.replace("{link}", f'<a href="{link}" class="color-button">Acessar Link</a>')
+            html_content = html_content.replace(
+                "{link}",
+                f'''<a href="{link}" 
+                    style="background-color:#9d00a0c7;color:#f3f3f3;border:none;padding:1rem 1.4rem;
+                    border-radius:0.3rem;cursor:pointer;font-size:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);
+                    margin:0 auto;text-decoration:none;display:inline-block;widht:50%;transition:0.4s ease;"
+                >Acompanhar Solicitação</a>'''
+            )
 
     # Anexar o conteúdo HTML
     msg.attach(MIMEText(html_content, "html"))
