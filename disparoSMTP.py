@@ -108,9 +108,11 @@ if __name__ == "__main__":
             #colorbox p{
                 opacity: 0.5;
             }
+
             #colorbox h1 {
                 font-weight: 600;
             }
+
             #content h4{
                 background: #8c8c8c29;
                 border-left: 6px solid #9d00a0c7;
@@ -124,6 +126,7 @@ if __name__ == "__main__":
                 font-weight: 400;
                 opacity: 0.75;
             }
+
             .purple {
                 color: #9d00a0c7;
                 text-decoration: none;
